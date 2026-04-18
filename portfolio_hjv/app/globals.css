@@ -1,0 +1,277 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Luxury Portfolio Theme - Off-white & Deep Black */
+  --background: #f5f5f5;
+  --foreground: #0a0a0a;
+  --card: #ffffff;
+  --card-foreground: #0a0a0a;
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0a;
+  --primary: #0a0a0a;
+  --primary-foreground: #f5f5f5;
+  --secondary: #e8e8e8;
+  --secondary-foreground: #0a0a0a;
+  --muted: #d4d4d4;
+  --muted-foreground: #525252;
+  --accent: #1a1a1a;
+  --accent-foreground: #f5f5f5;
+  --destructive: #dc2626;
+  --destructive-foreground: #fef2f2;
+  --border: #d4d4d4;
+  --input: #e5e5e5;
+  --ring: #0a0a0a;
+  --radius: 0.5rem;
+  
+  /* Custom luxury tokens */
+  --cream: #f5f5f5;
+  --charcoal: #0a0a0a;
+  --warm-gray: #a3a3a3;
+  --soft-white: #fafafa;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #f5f5f5;
+  --card: #141414;
+  --card-foreground: #f5f5f5;
+  --popover: #141414;
+  --popover-foreground: #f5f5f5;
+  --primary: #f5f5f5;
+  --primary-foreground: #0a0a0a;
+  --secondary: #262626;
+  --secondary-foreground: #f5f5f5;
+  --muted: #404040;
+  --muted-foreground: #a3a3a3;
+  --accent: #262626;
+  --accent-foreground: #f5f5f5;
+  --destructive: #991b1b;
+  --destructive-foreground: #fef2f2;
+  --border: #262626;
+  --input: #262626;
+  --ring: #f5f5f5;
+}
+
+@theme inline {
+  --font-sans: 'Geist', 'Geist Fallback', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Custom colors */
+  --color-cream: var(--cream);
+  --color-charcoal: var(--charcoal);
+  --color-warm-gray: var(--warm-gray);
+  --color-soft-white: var(--soft-white);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Hide scrollbar for smooth scroll experience */
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+  
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+  
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
+  }
+}
+
+/* Grain texture overlay */
+.grain {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200%;
+  background: transparent url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E") repeat;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 9999;
+  animation: grain 8s steps(10) infinite;
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+/* Custom cursor glow effect */
+.cursor-glow {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9998;
+  transition: opacity 0.3s ease;
+}
+
+/* Text selection */
+::selection {
+  background: #0a0a0a;
+  color: #f5f5f5;
+}
+
+/* Luxury typography */
+.text-editorial {
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.text-editorial-body {
+  letter-spacing: 0.01em;
+  line-height: 1.6;
+}
+
+/* Smooth image loading */
+img {
+  transition: opacity 0.3s ease;
+}
+
+img[data-loaded="false"] {
+  opacity: 0;
+}
+
+img[data-loaded="true"] {
+  opacity: 1;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+/* Cursor hidden state for forms */
+@media (pointer: fine) {
+  [data-cursor="hidden"] {
+    cursor: text !important;
+  }
+}
+
+/* Page transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.page-transition-exit {
+  opacity: 1;
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* Luxury underline animation */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Smooth image reveal */
+.image-reveal {
+  clip-path: inset(0 100% 0 0);
+  animation: imageReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes imageReveal {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
