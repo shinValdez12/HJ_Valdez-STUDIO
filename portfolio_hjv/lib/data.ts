@@ -13,8 +13,11 @@ export interface Project {
   liveUrl?: string
   githubUrl?: string
   apkUrl?: string
+  iosUrl?: string
   videoUrl?: string
   featured: boolean
+  platforms?: ("android" | "ios" | "web")[]
+  screenshots?: string[]
 }
 
 export interface Artwork {
@@ -23,6 +26,18 @@ export interface Artwork {
   category: string
   image: string
   year: string
+}
+
+export interface Experiment {
+  id: string
+  slug: string
+  title: string
+  description: string
+  category: "3d" | "motion" | "interaction" | "generative" | "audio"
+  image: string
+  techStack: string[]
+  demoType: "interactive" | "video" | "embed"
+  featured: boolean
 }
 
 export const projects: Project[] = [
@@ -38,9 +53,15 @@ export const projects: Project[] = [
     role: "Frontend Developer & UI/UX Designer",
     challenges: "Creating smooth scroll animations while maintaining performance and ensuring responsiveness across different screen sizes.",
     solution: "Used Framer Motion for animation control and optimized layout structure with Tailwind CSS. Implemented responsive design patterns and performance-focused components in Next.js.",
-    liveUrl: "https://hjv-studio.vercel.app/",
-    githubUrl: "",
+    liveUrl: "https://aurora-demo.vercel.app",
+    githubUrl: "https://hjv-studio.vercel.app/",
     featured: true,
+    platforms: ["web"],
+    screenshots: [
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&h=800&fit=crop",
+    ],
   },
   {
     id: "2",
@@ -55,8 +76,16 @@ export const projects: Project[] = [
     challenges: "Handling accurate time calculations including overtime, night differential, and flexible schedules while ensuring a smooth and responsive mobile UI.",
     solution: "Built a lightweight and efficient mobile app using React Native and Expo. Implemented real time calculations for work hours and earnings, and designed a clean UI for better usability.",
     apkUrl: "/native/MacdotrackerPH.apk",
+    iosUrl: "coming-soon",
     videoUrl: "",
     featured: true,
+    platforms: ["android", "ios"],
+    screenshots: [
+      "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&h=800&fit=crop",
+    ],
   },
   {
     id: "3",
@@ -73,6 +102,12 @@ export const projects: Project[] = [
     liveUrl: "",
     githubUrl: "",
     featured: true,
+    platforms: ["web"],
+    screenshots: [
+      "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=1200&h=800&fit=crop",
+    ],
   },
   {
     id: "4",
@@ -81,13 +116,18 @@ export const projects: Project[] = [
     shortDescription: "Modern SaaS landing page designed for performance, clarity, and high conversion.",
     fullDescription: "Nexus SaaS is a modern developer-focused landing page built to showcase a high-performance platform. It emphasizes speed, scalability, and seamless deployment through a clean UI, smooth animations, and a structured user journey. The design is inspired by leading SaaS platforms, focusing on clarity, engagement, and conversion-driven layout.",
     image: "/project/nexus-saas.png",
-    category: "web",
+    category: "saas",
     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     role: "Frontend Developer & UI Designer",
     challenges: "Designing a visually engaging SaaS interface while maintaining performance and smooth animation flow across devices.",
     solution: "Used Framer Motion for smooth transitions, structured sections for clear user flow, and optimized components in Next.js to ensure fast load times and responsiveness..",
     liveUrl: "https://nexus-sand-ten.vercel.app/",
     featured: false,
+    platforms: ["web"],
+    screenshots: [
+      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1200&h=800&fit=crop",
+    ],
   },
   {
     id: "5",
@@ -101,46 +141,37 @@ export const projects: Project[] = [
     role: "Frontend Developer & UI/UX Designer",
     challenges: "Creating a premium, award-level design while maintaining performance, responsiveness, and smooth animation flow.",
     solution: "Used Framer Motion for advanced animations, structured layouts carefully to avoid scroll issues, and optimized components for performance while maintaining a visually rich experience.",
-    liveUrl: "shin-dev-beryl.vercel.app",
+    apkUrl: "/downloads/pulse.apk",
+    iosUrl: "shin-dev-beryl.vercel.app",
     featured: false,
+    platforms: ["web"],
+    screenshots: [
+      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200&h=800&fit=crop",
+    ],
   },
-  // {
-  //   id: "6",
-  //   slug: "flux-commerce",
-  //   title: "Flux Commerce",
-  //   shortDescription: "Next-generation e-commerce platform",
-  //   fullDescription: "Flux is a modern e-commerce solution designed for high-performance and conversion optimization. Features AI product recommendations and seamless checkout.",
-  //   image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=800&fit=crop",
-  //   category: "saas",
-  //   techStack: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Algolia"],
-  //   role: "Technical Lead",
-  //   challenges: "Optimizing for conversion while handling high traffic loads during sales events.",
-  //   solution: "Implemented edge caching, optimized the checkout funnel with A/B testing, and built a scalable inventory management system.",
-  //   liveUrl: "https://flux-commerce.vercel.app",
-  //   githubUrl: "https://github.com/hjvaldez/flux",
-  //   featured: false,
-  // },
 ]
 
 export const artworks: Artwork[] = [
-  {
+ {
     id: "1",
     title: "Quiet Companion",
-    category: "Abstract",
+    category: "2D Art",
     image: "gallery/Quiet_Companion.jpg",
     year: "2025",
   },
   {
     id: "2",
     title: "Anxiety",
-    category: "Digital Art",
+    category: "2D Art",
     image: "gallery/anxiety.jpg",
     year: "2025",
   },
   {
     id: "3",
     title: "The Memory of Her",
-    category: "The Memory of Her",
+    category: "2D Art",
     image: "gallery/Her_Presence.jpg",
     year: "2026",
   },
@@ -165,20 +196,97 @@ export const artworks: Artwork[] = [
     image: "gallery/Luminous_Gaze.png",
     year: "2023",
   },
-  // {
-  //   id: "7",
-  //   title: "Void Walker",
-  //   category: "Concept Art",
-  //   image: "https://images.unsplash.com/photo-1604076913837-52ab5f9e6182?w=700&h=1000&fit=crop",
-  //   year: "2024",
-  // },
-  // {
-  //   id: "8",
-  //   title: "Data Streams",
-  //   category: "Generative",
-  //   image: "https://images.unsplash.com/photo-1633167606207-d840b5070fc2?w=800&h=600&fit=crop",
-  //   year: "2024",
-  // },
+]
+
+export const experiments: Experiment[] = [
+  {
+    id: "1",
+    slug: "particle-flow",
+    title: "Particle Flow",
+    description: "Interactive particle system that responds to mouse movement and creates organic flowing patterns.",
+    category: "generative",
+    image: "https://images.unsplash.com/photo-1633167606207-d840b5070fc2?w=800&h=600&fit=crop",
+    techStack: ["Three.js", "GLSL", "React Three Fiber"],
+    demoType: "interactive",
+    featured: true,
+  },
+  {
+    id: "2",
+    slug: "morphing-shapes",
+    title: "Morphing Shapes",
+    description: "Smooth morphing animations between geometric primitives using shader-based techniques.",
+    category: "3d",
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&h=600&fit=crop",
+    techStack: ["React Three Fiber", "Drei", "GSAP"],
+    demoType: "interactive",
+    featured: true,
+  },
+  {
+    id: "3",
+    slug: "audio-visualizer",
+    title: "Audio Visualizer",
+    description: "Real-time audio visualization using Web Audio API with reactive 3D elements.",
+    category: "audio",
+    image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&h=600&fit=crop",
+    techStack: ["Web Audio API", "Canvas", "Framer Motion"],
+    demoType: "interactive",
+    featured: true,
+  },
+  {
+    id: "4",
+    slug: "magnetic-cursor",
+    title: "Magnetic Cursor",
+    description: "Elements that are attracted to and repelled by cursor movement with physics simulation.",
+    category: "interaction",
+    image: "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=800&h=600&fit=crop",
+    techStack: ["Framer Motion", "React", "Physics Engine"],
+    demoType: "interactive",
+    featured: false,
+  },
+  {
+    id: "5",
+    slug: "scroll-distortion",
+    title: "Scroll Distortion",
+    description: "Image distortion effects driven by scroll velocity and direction.",
+    category: "motion",
+    image: "https://images.unsplash.com/photo-1550859492-d5da9d8e45f3?w=800&h=600&fit=crop",
+    techStack: ["GLSL", "Three.js", "Lenis"],
+    demoType: "interactive",
+    featured: false,
+  },
+  {
+    id: "6",
+    slug: "generative-typography",
+    title: "Generative Typography",
+    description: "Procedurally generated letterforms that evolve and mutate over time.",
+    category: "generative",
+    image: "https://images.unsplash.com/photo-1634017839464-5c339bbe3c35?w=800&h=600&fit=crop",
+    techStack: ["Canvas", "P5.js", "OpenType.js"],
+    demoType: "interactive",
+    featured: true,
+  },
+  {
+    id: "7",
+    slug: "liquid-transitions",
+    title: "Liquid Transitions",
+    description: "Fluid page transitions using displacement maps and shader effects.",
+    category: "motion",
+    image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800&h=600&fit=crop",
+    techStack: ["GSAP", "Pixi.js", "Custom Shaders"],
+    demoType: "video",
+    featured: false,
+  },
+  {
+    id: "8",
+    slug: "3d-text-warp",
+    title: "3D Text Warp",
+    description: "Text that wraps and bends along 3D surfaces with real-time deformation.",
+    category: "3d",
+    image: "https://images.unsplash.com/photo-1549490349-8643362247b5?w=800&h=600&fit=crop",
+    techStack: ["Three.js", "Troika-3d-text", "Custom Geometry"],
+    demoType: "interactive",
+    featured: false,
+  },
 ]
 
 export const skills = [

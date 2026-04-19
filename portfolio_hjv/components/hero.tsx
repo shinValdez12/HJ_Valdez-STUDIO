@@ -175,7 +175,7 @@ export function Hero() {
       </motion.div>
 
       {/* Scroll indicator */}
-      {/* <motion.div
+      <motion.div
         className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -191,11 +191,11 @@ export function Hero() {
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           />
         </motion.div>
-      </motion.div> */}
+      </motion.div>
 
       {/* Corner accents */}
       <motion.div
-        className="absolute top-20 right-8 text-muted-foreground text-[10px] tracking-[0.2em] uppercase hidden md:block"
+        className="absolute top-18 right-8 text-muted-foreground text-[10px] tracking-[0.2em] uppercase hidden md:block"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}

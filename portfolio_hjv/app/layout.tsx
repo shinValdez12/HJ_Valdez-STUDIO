@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     description: 'Crafting immersive digital experiences at the intersection of code and art.',
     siteName: 'HJ Valdez Portfolio',
   },
-  twitter: {
+  Instagram: {
     card: 'summary_large_image',
     title: 'HJ Valdez | Developer & Digital Artist',
     description: 'Crafting immersive digital experiences at the intersection of code and art.',
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
         type: 'image/x-icon',
       },
     ],
-    apple: '/favicon.ico',
+    apple: 'favicon.ico',
   },
 }
 

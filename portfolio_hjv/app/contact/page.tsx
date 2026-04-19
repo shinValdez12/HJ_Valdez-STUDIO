@@ -115,9 +115,9 @@ export default function ContactPage() {
                   </h2>
                   <div className="flex flex-col gap-3">
                     {[
-                      { label: "GitHub", href: "https://github.com/hjvaldez" },
-                      { label: "LinkedIn", href: "https://linkedin.com/in/hjvaldez" },
-                      { label: "Twitter", href: "https://twitter.com/hjvaldez" },
+                      { label: "GitHub", href: "https://github.com/shinValdez12" },
+                      { label: "LinkedIn", href: "https://www.linkedin.com/in/hashim-jahara-d-valdez-245a20374/" },
+                      { label: "Instagram", href: "https://www.instagram.com/hjvadlez/?hl=en" },
                     ].map((link) => (
                       <a
                         key={link.label}

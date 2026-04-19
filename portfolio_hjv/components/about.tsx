@@ -73,7 +73,7 @@ export function About() {
               transition={{ delay: 0.5 }}
             >
               {[
-                { value: "5+", label: "Years Experience" },
+                { value: "1+", label: "Years Experience" },
                 { value: "50+", label: "Projects Completed" },
                 { value: "20+", label: "Happy Clients" },
               ].map((stat, index) => (

@@ -73,7 +73,7 @@ export default function Home() {
                     Email
                   </a>
                   <a
-                    href="https://github.com/hjvaldez"
+                    href="https://github.com/shinValdez12"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs tracking-wider text-muted-foreground hover:text-foreground transition-colors"
@@ -82,7 +82,7 @@ export default function Home() {
                     GitHub
                   </a>
                   <a
-                    href="https://linkedin.com/in/hjvaldez"
+                    href="https://www.linkedin.com/in/hashim-jahara-d-valdez-245a20374/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs tracking-wider text-muted-foreground hover:text-foreground transition-colors"

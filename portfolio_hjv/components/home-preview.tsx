@@ -261,9 +261,9 @@ export function AboutPreview() {
           {/* Right - Stats */}
           <div className="grid grid-cols-2 gap-8">
             {[
-              { number: "5+", label: "Years Experience" },
-              { number: "30+", label: "Projects Completed" },
-              { number: "15+", label: "Happy Clients" },
+              { number: "1+", label: "Years Experience" },
+              { number: "18+", label: "Projects Completed" },
+              { number: "5+", label: "Happy Clients" },
               { number: "3", label: "Design Awards" },
             ].map((stat, i) => (
               <motion.div
