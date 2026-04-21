@@ -223,7 +223,7 @@ export function CustomCursor() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.2 }}
-                className="text-[10px] font-medium text-charcoal tracking-[0.15em] uppercase whitespace-nowrap"
+                className="text-[10px] font-medium text-black tracking-[0.15em] uppercase whitespace-nowrap"
               >
                 {cursorState.text}
               </motion.span>
@@ -279,7 +279,7 @@ export function CustomCursor() {
             stiffness: 200,
           }}
           style={{
-            background: "radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(0,0,0,0.06) 0%, transparent 70%)",
             transform: "translate(-50%, -50%)",
           }}
         />
@@ -299,7 +299,7 @@ export function CustomCursor() {
             width: cursorState.isHovering ? 100 : 60,
             height: cursorState.isHovering ? 100 : 60,
             opacity: cursorState.variant === "hidden" ? 0 : 0.1,
-            borderColor: "rgba(255,255,255,0.1)",
+            borderColor: "rgba(0,0,0,0.15)",
           }}
           transition={{
             type: "spring",
