@@ -195,14 +195,14 @@ export function CustomCursor() {
             x: -size.width / 2,
             y: -size.height / 2,
             backgroundColor: cursorState.variant === "text" || cursorState.variant === "view" || cursorState.variant === "inspect"
-              ? "rgba(5, 5, 5, 0.95)"
+              ? "rgba(0, 0, 0, 0.85)"
               : cursorState.variant === "expand" || cursorState.variant === "link"
-              ? "rgba(245, 245, 245, 0.15)"
-              : "rgb(2, 2, 2)",
+              ? "rgba(0, 0, 0, 0.08)"
+              : "rgb(0, 0, 0, 0.9)",
             borderWidth: cursorState.variant === "expand" || cursorState.variant === "link" || cursorState.variant === "drag"
               ? 1
               : 0,
-            borderColor: "rgba(245, 245, 245, 0.5)",
+            borderColor: "rgba(0, 0, 0, 0.2)",
           }}
           transition={{
             type: "spring",
