@@ -195,10 +195,10 @@ export function CustomCursor() {
             x: -size.width / 2,
             y: -size.height / 2,
             backgroundColor: cursorState.variant === "text" || cursorState.variant === "view" || cursorState.variant === "inspect"
-              ? "rgba(245, 245, 245, 0.95)"
+              ? "rgba(5, 5, 5, 0.95)"
               : cursorState.variant === "expand" || cursorState.variant === "link"
               ? "rgba(245, 245, 245, 0.15)"
-              : "rgba(245, 245, 245, 1)",
+              : "rgb(2, 2, 2)",
             borderWidth: cursorState.variant === "expand" || cursorState.variant === "link" || cursorState.variant === "drag"
               ? 1
               : 0,
