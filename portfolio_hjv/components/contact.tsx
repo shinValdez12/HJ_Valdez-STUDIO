@@ -3,6 +3,8 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 
+import { contact } from "@/lib/data"
+
 interface FormData {
   name: string
   email: string
@@ -90,10 +92,10 @@ export function Contact() {
                   Email
                 </p>
                 <a
-                  href="mailto:hashimjaharadvaldez@gmail.com"
+                  href={`mailto:${contact.email}`}
                   className="text-lg hover:text-[#a3a3a3] transition-colors"
                 >
-                  hashimjaharadvaldez@gmail.com
+                  {contact.email}
                 </a>
               </div>
 
@@ -109,7 +111,7 @@ export function Contact() {
                   Social
                 </p>
                 <div className="flex gap-6">
-                  {["GitHub", "LinkedIn", "Twitter"].map((social) => (
+                  {["GitHub", "LinkedIn", "instagarm"].map((social) => (
                     <a
                       key={social}
                       href="#"

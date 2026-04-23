@@ -10,6 +10,8 @@ import { Navigation } from "@/components/navigation"
 import { SmoothScroll } from "@/components/smooth-scroll"
 import { CustomCursor } from "@/components/custom-cursor"
 
+import { contact } from "@/lib/data"
+
 const ThreeBackgroundLight = dynamic(
   () => import("@/components/three-background").then((mod) => mod.ThreeBackgroundLight),
   { ssr: false }
@@ -66,14 +68,14 @@ export default function Home() {
                 </span>
                 <div className="flex items-center gap-8">
                   <a
-                    href="mailto:hashimjaharadvaldez@gmail.com"
+                    href={`mailto:${contact.email}`}
                     className="text-xs tracking-wider text-muted-foreground hover:text-foreground transition-colors"
                     data-cursor="expand"
                   >
                     Email
                   </a>
                   <a
-                    href="https://github.com/shinValdez12"
+                    href={contact.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs tracking-wider text-muted-foreground hover:text-foreground transition-colors"
@@ -82,7 +84,7 @@ export default function Home() {
                     GitHub
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/hashim-jahara-d-valdez-245a20374/"
+                    href={contact.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs tracking-wider text-muted-foreground hover:text-foreground transition-colors"

@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server"
 import nodemailer from "nodemailer"
 
+import { contact } from "@/lib/data"
+
 export async function POST(request: Request) {
   try {
     const { name, email, message } = await request.json()
@@ -51,7 +53,7 @@ export async function POST(request: Request) {
     // Send email
     await transporter.sendMail({
       from: smtpUser,
-      to: "hashimjaharadvaldez@gmail.com",
+      to: contact.email,
       replyTo: email,
       subject: `Portfolio Contact: ${name}`,
       text: `

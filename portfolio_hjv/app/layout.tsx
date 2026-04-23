@@ -22,16 +22,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://hjvaldez.dev',
+    url: '',
     title: 'HJ Valdez | Developer & Digital Artist',
     description: 'Crafting immersive digital experiences at the intersection of code and art.',
     siteName: 'HJ Valdez Portfolio',
   },
-  Instagram: {
-    card: 'summary_large_image',
-    title: 'HJ Valdez | Developer & Digital Artist',
-    description: 'Crafting immersive digital experiences at the intersection of code and art.',
-  },
+  // Instagram: {
+  //   card: 'summary_large_image',
+  //   title: 'HJ Valdez | Developer & Digital Artist',
+  //   description: 'Crafting immersive digital experiences at the intersection of code and art.',
+  // },
   robots: {
     index: true,
     follow: true,

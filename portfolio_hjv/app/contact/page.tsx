@@ -7,6 +7,8 @@ import { Navigation } from "@/components/navigation"
 import { SmoothScroll } from "@/components/smooth-scroll"
 import { CustomCursor } from "@/components/custom-cursor"
 
+import { contact } from "@/lib/data"
+
 interface FormState {
   name: string
   email: string
@@ -92,11 +94,11 @@ export default function ContactPage() {
                     Email
                   </h2>
                   <a
-                    href="mailto:hashimjaharadvaldez@gmail.com"
+                    href={`mailto:${contact.email}`}
                     className="text-xl md:text-2xl font-light hover:text-muted-foreground transition-colors"
                     data-cursor="expand"
                   >
-                    hashimjaharadvaldez@gmail.com
+                    {contact.email}
                   </a>
                 </div>
 
@@ -115,9 +117,9 @@ export default function ContactPage() {
                   </h2>
                   <div className="flex flex-col gap-3">
                     {[
-                      { label: "GitHub", href: "https://github.com/shinValdez12" },
-                      { label: "LinkedIn", href: "https://www.linkedin.com/in/hashim-jahara-d-valdez-245a20374/" },
-                      { label: "Instagram", href: "https://www.instagram.com/hjvadlez/?hl=en" },
+                      { label: "GitHub", href: contact.github },
+                      { label: "LinkedIn", href: contact.linkedin },
+                      { label: "Instagram", href: contact.instagram },
                     ].map((link) => (
                       <a
                         key={link.label}

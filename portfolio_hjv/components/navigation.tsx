@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
+import { contact } from "@/lib/data"
+
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
@@ -185,10 +187,10 @@ export function Navigation() {
                   GET IN TOUCH
                 </p>
                 <a
-                  href="mailto:hashimjaharadvaldez@gmail.com"
+                  href={`mailto:${contact.email}`}
                   className="text-sm text-foreground"
                 >
-                  hashimjaharadvaldez@gmail.com
+                  {contact.email}
                 </a>
               </motion.div>
             </div>

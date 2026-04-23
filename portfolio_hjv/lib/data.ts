@@ -33,11 +33,24 @@ export interface Experiment {
   slug: string
   title: string
   description: string
-  category: "3d" | "motion" | "interaction" | "generative" | "audio"
+  category: "motion" | "interaction" | "generative"
   image: string
   techStack: string[]
   demoType: "interactive" | "video" | "embed"
   featured: boolean
+}
+
+export interface Contact {
+  email: string
+  github: string
+  linkedin: string
+  instagram: string
+}
+export const contact: Contact = {
+  email: "hashimjaharadvaldez@gmail.com",
+  github: "https://github.com/shinValdez12",
+  linkedin: "https://www.linkedin.com/in/hashim-jahara-d-valdez-245a20374/",
+  instagram: "https://www.gram.com/hjvadlez/?hl=en",
 }
 
 export const projects: Project[] = [
@@ -53,14 +66,14 @@ export const projects: Project[] = [
     role: "Frontend Developer & UI/UX Designer",
     challenges: "Creating smooth scroll animations while maintaining performance and ensuring responsiveness across different screen sizes.",
     solution: "Used Framer Motion for animation control and optimized layout structure with Tailwind CSS. Implemented responsive design patterns and performance-focused components in Next.js.",
-    liveUrl: "https://aurora-demo.vercel.app",
-    githubUrl: "https://hjv-studio.vercel.app/",
+    liveUrl: "https://hjv-studio.vercel.app/",
+    githubUrl: "",
     featured: true,
     platforms: ["web"],
     screenshots: [
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&h=800&fit=crop",
+      "/project/project-image/hjv-portfolio1.png",
+      "/project/project-image/hjv-portfolio2.png",
+      "/project/project-image/hjv-portfolio3.png",
     ],
   },
   {
@@ -81,10 +94,9 @@ export const projects: Project[] = [
     featured: true,
     platforms: ["android", "ios"],
     screenshots: [
-      "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=1200&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&h=800&fit=crop",
+      "/project/project-image/macdotracker1.png",
+      "/project/project-image/macdotracker2.png",
+      "/project/project-image/macdotracker3.png",
     ],
   },
   {
@@ -104,9 +116,9 @@ export const projects: Project[] = [
     featured: true,
     platforms: ["web"],
     screenshots: [
-      "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1200&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=1200&h=800&fit=crop",
+      "/project/project-image/haven-real-estate-1.png",
+      "/project/project-image/haven-real-estate-2.png",
+      "/project/project-image/haven-real-estate-3.png",
     ],
   },
   {
@@ -125,8 +137,8 @@ export const projects: Project[] = [
     featured: false,
     platforms: ["web"],
     screenshots: [
-      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1200&h=800&fit=crop",
+      "/project/project-image/nexus-saas-1.png",
+      "/project/project-image/nexus-saas-2.png",
     ],
   },
   {
@@ -141,14 +153,13 @@ export const projects: Project[] = [
     role: "Frontend Developer & UI/UX Designer",
     challenges: "Creating a premium, award-level design while maintaining performance, responsiveness, and smooth animation flow.",
     solution: "Used Framer Motion for advanced animations, structured layouts carefully to avoid scroll issues, and optimized components for performance while maintaining a visually rich experience.",
-    apkUrl: "/downloads/pulse.apk",
-    iosUrl: "shin-dev-beryl.vercel.app",
+    liveUrl: "shin-dev-beryl.vercel.app",
     featured: false,
     platforms: ["web"],
     screenshots: [
-      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200&h=800&fit=crop",
+      "/project/project-image/shin-dev-portfolio-1.png",
+      "/project/project-image/shin-dev-portfolio-2.png",
+      "/project/project-image/shin-dev-portfolio-3.png",
     ],
   },
 ]
@@ -205,87 +216,43 @@ export const experiments: Experiment[] = [
     title: "Particle Flow",
     description: "Interactive particle system that responds to mouse movement and creates organic flowing patterns.",
     category: "generative",
-    image: "https://images.unsplash.com/photo-1633167606207-d840b5070fc2?w=800&h=600&fit=crop",
+    image: "/video/Particle_Flow.mp4",
     techStack: ["Three.js", "GLSL", "React Three Fiber"],
     demoType: "interactive",
     featured: true,
   },
   {
     id: "2",
-    slug: "morphing-shapes",
-    title: "Morphing Shapes",
-    description: "Smooth morphing animations between geometric primitives using shader-based techniques.",
-    category: "3d",
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&h=600&fit=crop",
-    techStack: ["React Three Fiber", "Drei", "GSAP"],
-    demoType: "interactive",
-    featured: true,
-  },
-  {
-    id: "3",
-    slug: "audio-visualizer",
-    title: "Audio Visualizer",
-    description: "Real-time audio visualization using Web Audio API with reactive 3D elements.",
-    category: "audio",
-    image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&h=600&fit=crop",
-    techStack: ["Web Audio API", "Canvas", "Framer Motion"],
-    demoType: "interactive",
-    featured: true,
-  },
-  {
-    id: "4",
     slug: "magnetic-cursor",
     title: "Magnetic Cursor",
     description: "Elements that are attracted to and repelled by cursor movement with physics simulation.",
     category: "interaction",
-    image: "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=800&h=600&fit=crop",
+    image: "/video/magnetic-cursor.mp4",
     techStack: ["Framer Motion", "React", "Physics Engine"],
     demoType: "interactive",
     featured: false,
   },
+  // {
+  //   id: "5",
+  //   slug: "scroll-distortion",
+  //   title: "Scroll Distortion",
+  //   description: "Image distortion effects driven by scroll velocity and direction.",
+  //   category: "motion",
+  //   image: "https://images.unsplash.com/photo-1550859492-d5da9d8e45f3?w=800&h=600&fit=crop",
+  //   techStack: ["GLSL", "Three.js", "Lenis"],
+  //   demoType: "interactive",
+  //   featured: false,
+  // },
   {
-    id: "5",
-    slug: "scroll-distortion",
-    title: "Scroll Distortion",
-    description: "Image distortion effects driven by scroll velocity and direction.",
-    category: "motion",
-    image: "https://images.unsplash.com/photo-1550859492-d5da9d8e45f3?w=800&h=600&fit=crop",
-    techStack: ["GLSL", "Three.js", "Lenis"],
-    demoType: "interactive",
-    featured: false,
-  },
-  {
-    id: "6",
+    id: "3",
     slug: "generative-typography",
     title: "Generative Typography",
     description: "Procedurally generated letterforms that evolve and mutate over time.",
     category: "generative",
-    image: "https://images.unsplash.com/photo-1634017839464-5c339bbe3c35?w=800&h=600&fit=crop",
+    image: "/video/generative-type.mp4",
     techStack: ["Canvas", "P5.js", "OpenType.js"],
     demoType: "interactive",
     featured: true,
-  },
-  {
-    id: "7",
-    slug: "liquid-transitions",
-    title: "Liquid Transitions",
-    description: "Fluid page transitions using displacement maps and shader effects.",
-    category: "motion",
-    image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800&h=600&fit=crop",
-    techStack: ["GSAP", "Pixi.js", "Custom Shaders"],
-    demoType: "video",
-    featured: false,
-  },
-  {
-    id: "8",
-    slug: "3d-text-warp",
-    title: "3D Text Warp",
-    description: "Text that wraps and bends along 3D surfaces with real-time deformation.",
-    category: "3d",
-    image: "https://images.unsplash.com/photo-1549490349-8643362247b5?w=800&h=600&fit=crop",
-    techStack: ["Three.js", "Troika-3d-text", "Custom Geometry"],
-    demoType: "interactive",
-    featured: false,
   },
 ]
 
