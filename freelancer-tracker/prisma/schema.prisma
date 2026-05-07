@@ -1,0 +1,330 @@
+// This is your Prisma schema file.
+// Learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// AUTH & USER MODELS
+// ============================================
+
+enum UserRole {
+  FREELANCER
+  CLIENT
+
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  password  String   // Hash using bcrypt in production
+  role      UserRole @default(CLIENT)
+  
+  // Freelancer-specific fields
+  freelancerId String? @unique
+  freelancer   Freelancer?
+  
+  // Client-specific fields
+  clientId String? @unique
+  client   Client?
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@index([email])
+  @@index([role])
+}
+
+model Freelancer {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // Public profile info
+  bio       String?
+  avatar    String?
+  
+  // Business info
+  hourlyRate    Int? // in cents
+  timezone      String @default("UTC")
+  
+  // Relations
+  projects  Project[]
+  clients   Client[]  // Clients worked with
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@index([userId])
+}
+
+model Client {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // Client info
+  company   String?
+  phone     String?
+  
+  // Relations
+  freelancerId String?
+  freelancer   Freelancer? @relation(fields: [freelancerId], references: [id])
+  
+  projects  Project[]
+  accessTokens ClientAccessToken[]
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@index([userId])
+  @@index([freelancerId])
+}
+
+// ============================================
+// PROJECT MODELS
+// ============================================
+
+enum ProjectStatus {
+  PLANNING
+  ACTIVE
+  ON_HOLD
+  COMPLETED
+  ARCHIVED
+
+}
+
+model Project {
+  id        String   @id @default(cuid())
+  
+  // Basic info
+  name      String
+  description String?
+  status    ProjectStatus @default(ACTIVE)
+  
+  // Timeline
+  startDate DateTime?
+  dueDate   DateTime?
+  
+  // Relations
+  freelancerId String
+  freelancer   Freelancer @relation(fields: [freelancerId], references: [id], onDelete: Cascade)
+  
+  clientId  String
+  client    Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  
+  // Features
+  tasks     Task[]
+  activities ActivityLog[]
+  scopeItems ScopeItem[]
+  accessTokens ClientAccessToken[]
+  weeklyReports WeeklyReport[]
+  
+  // Metadata
+  budget    Int? // in cents
+  completionPercentage Int @default(0) // auto-calculated
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@index([freelancerId])
+  @@index([clientId])
+  @@index([status])
+  @@index([dueDate])
+}
+
+// ============================================
+// TASK MODELS
+// ============================================
+
+enum TaskStatus {
+  BACKLOG
+  TODO
+  IN_PROGRESS
+  REVIEW
+  COMPLETED
+
+}
+
+model Task {
+  id        String   @id @default(cuid())
+  
+  // Basic info
+  title     String
+  description String?
+  status    TaskStatus @default(BACKLOG)
+  
+  // Timeline
+  dueDate   DateTime?
+  
+  // Relations
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  
+  // Metadata
+  order     Int @default(0) // for ordering
+  estimate  Int? // in minutes
+  timeSpent Int @default(0) // in minutes, auto-tracked
+  isBlocked Boolean @default(false)
+  blockedReason String?
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@index([projectId])
+  @@index([status])
+  @@index([dueDate])
+}
+
+// ============================================
+// SCOPE LOCK SYSTEM
+// ============================================
+
+enum ScopeItemStatus {
+  IN_SCOPE
+  OUT_OF_SCOPE
+  UNDER_REVIEW
+
+}
+
+model ScopeItem {
+  id        String   @id @default(cuid())
+  
+  // Basic info
+  title     String
+  description String?
+  status    ScopeItemStatus @default(IN_SCOPE)
+  
+  // Relations
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  
+  // Tracking
+  addedAt   DateTime @default(now())
+  approvedAt DateTime?
+  approvedBy String? // freelancer note on approval
+  
+  @@index([projectId])
+  @@index([status])
+}
+
+// ============================================
+// ACTIVITY & LOGGING
+// ============================================
+
+enum ActivityType {
+  // Task activities
+  TASK_CREATED
+  TASK_UPDATED
+  TASK_STATUS_CHANGED
+  TASK_COMPLETED
+  
+  // Project activities
+  PROJECT_CREATED
+  PROJECT_UPDATED
+  PROJECT_STATUS_CHANGED
+  PROJECT_COMPLETED
+  
+  // Client activities
+  CLIENT_ACCESSED_VIEW
+  CLIENT_COMMENT_ADDED
+  
+  // Scope activities
+  SCOPE_ITEM_ADDED
+  SCOPE_ITEM_APPROVED
+
+}
+
+model ActivityLog {
+  id        String   @id @default(cuid())
+  
+  // Activity info
+  type      ActivityType
+  title     String
+  description String?
+  
+  // Relations
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  
+  // Metadata
+  metadata  Json? // flexible data storage
+  
+  createdAt DateTime @default(now())
+  
+  @@index([projectId])
+  @@index([type])
+  @@index([createdAt])
+}
+
+// ============================================
+// CLIENT VIEW & ACCESS
+// ============================================
+
+model ClientAccessToken {
+  id        String   @id @default(cuid())
+  
+  // Token info
+  token     String   @unique @default(cuid()) // Public-facing token
+  isActive  Boolean  @default(true)
+  
+  // Relations
+  clientId  String
+  client    Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  
+  projectId String?
+  project   Project? @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  
+  // Access control
+  canViewTasks      Boolean @default(true)
+  canViewTimeline   Boolean @default(true)
+  canViewBudget     Boolean @default(false)
+  
+  // Tracking
+  expiresAt DateTime?
+  lastAccessedAt DateTime?
+  accessCount Int @default(0)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@index([token])
+  @@index([clientId])
+  @@index([isActive])
+}
+
+// ============================================
+// REPORTS & ANALYTICS
+// ============================================
+
+model WeeklyReport {
+  id        String   @id @default(cuid())
+  
+  // Report info
+  week      DateTime // Start of week
+  
+  // Relations
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  
+  // Summary data
+  tasksCompleted Int @default(0)
+  tasksInProgress Int @default(0)
+  timeTracked Int @default(0) // in minutes
+  
+  // HTML content for sending
+  htmlContent String?
+  
+  createdAt DateTime @default(now())
+  
+  @@unique([projectId, week])
+  @@index([projectId])
+  @@index([week])
+}

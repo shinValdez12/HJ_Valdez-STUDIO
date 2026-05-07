@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   Global Styles
+   ============================================ */
+
+@layer base {
+  /* Remove default scrollbar styling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+}
+
+@layer components {
+  /* Button base styles */
+  .btn-base {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn-base bg-brand-600 text-white hover:bg-brand-700 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply btn-base bg-brand-200 text-brand-900 hover:bg-brand-300;
+  }
+
+  .btn-outline {
+    @apply btn-base border-2 border-brand-300 text-brand-600 hover:bg-brand-50;
+  }
+
+  /* Card base styles */
+  .card {
+    @apply bg-white rounded-lg border border-brand-200 shadow-sm;
+  }
+
+  .card-interactive {
+    @apply card transition-all duration-200 hover:shadow-md hover:border-brand-300;
+  }
+
+  /* Form inputs */
+  .input-base {
+    @apply w-full px-3 py-2 rounded-lg border border-brand-300 font-medium text-brand-900 placeholder-brand-400 transition-all duration-200 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500 focus:ring-opacity-20 disabled:bg-brand-100 disabled:cursor-not-allowed;
+  }
+
+  /* Badge styles */
+  .badge-success {
+    @apply inline-flex items-center gap-1 px-2 py-1 rounded-full bg-green-100 text-green-800 text-xs font-medium;
+  }
+
+  .badge-warning {
+    @apply inline-flex items-center gap-1 px-2 py-1 rounded-full bg-yellow-100 text-yellow-800 text-xs font-medium;
+  }
+
+  .badge-danger {
+    @apply inline-flex items-center gap-1 px-2 py-1 rounded-full bg-red-100 text-red-800 text-xs font-medium;
+  }
+
+  .badge-info {
+    @apply inline-flex items-center gap-1 px-2 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-medium;
+  }
+
+  /* Skeleton loader */
+  .skeleton {
+    @apply bg-gradient-to-r from-brand-200 to-brand-100 rounded-lg animate-pulse;
+  }
+
+  /* Page container */
+  .page-container {
+    @apply min-h-screen bg-brand-50;
+  }
+
+  .page-content {
+    @apply mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  /* Flex utilities */
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  .flex-col-center {
+    @apply flex flex-col items-center justify-center;
+  }
+
+  /* Grid utilities */
+  .grid-auto-fit {
+    @apply grid auto-cols-fr gap-6;
+  }
+
+  /* Text utilities */
+  .text-truncate {
+    @apply truncate;
+  }
+
+  .text-line-clamp-2 {
+    @apply line-clamp-2;
+  }
+
+  .text-line-clamp-3 {
+    @apply line-clamp-3;
+  }
+
+  /* Transitions */
+  .transition-fast {
+    @apply transition-all duration-150;
+  }
+
+  .transition-normal {
+    @apply transition-all duration-300;
+  }
+
+  .transition-slow {
+    @apply transition-all duration-500;
+  }
+}
