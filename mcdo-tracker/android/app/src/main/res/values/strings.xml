@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">McDonald\'s Time Tracker</string>
+    <string name="title_activity_main">McDonald\'s Time Tracker</string>
+    <string name="package_name">com.mcdonalds.timetracker</string>
+    <string name="custom_url_scheme">com.mcdonalds.timetracker</string>
+</resources>
