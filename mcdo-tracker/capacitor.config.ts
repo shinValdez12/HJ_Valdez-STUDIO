@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.mcdonalds.timetracker',
-  appName: "McDonald's Time Tracker",
+  appName: "CrewTime",
   webDir: 'dist',
   server: {
     androidScheme: 'https',

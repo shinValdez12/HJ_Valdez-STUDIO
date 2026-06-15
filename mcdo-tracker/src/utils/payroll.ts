@@ -309,7 +309,7 @@ export function aggregatePayrollSummary(
     totalNightDiffPay: 0,
     totalEarnings: 0,
     daysWorked: 0,
-    daysAbsent: 0,
+    daysRestday: 0,
     lateCount: 0,
     // Legacy field for backward compatibility
     totalRegularHours: 0,

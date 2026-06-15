@@ -42,7 +42,7 @@ export default function CalendarPage() {
   const getDayColor = (dateStr: string) => {
     const entry = entryMap[dateStr];
     if (!entry) return '';
-    if (entry.status === 'absent') return 'bg-red-500 text-white';
+    if (entry.status === 'Restday') return 'bg-red-500 text-white';
     if (entry.holidayType === 'regular') return 'bg-yellow-500 text-white';
     if (entry.holidayType === 'special') return 'bg-amber-400 text-white';
     if (entry.overtimeHours > 0) return 'bg-purple-500 text-white';
@@ -94,7 +94,7 @@ export default function CalendarPage() {
 
   const legend = [
     { color: 'bg-emerald-500', label: 'Present' },
-    { color: 'bg-red-500', label: 'Absent' },
+    { color: 'bg-red-500', label: 'Restday' },
     { color: 'bg-yellow-500', label: 'Holiday' },
     { color: 'bg-purple-500', label: 'OT' },
     { color: 'bg-blue-500', label: 'Night Shift' },

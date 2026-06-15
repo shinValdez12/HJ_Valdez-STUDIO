@@ -162,7 +162,7 @@ export default function ProfilePage() {
             </div>
             <div className="flex justify-between py-1 border-b border-surface-border dark:border-surface-border-dark">
               <span className="text-gray-500">Overtime Rate</span>
-              <span className="font-semibold text-purple-600">125% · after 8hrs</span>
+              <span className="font-semibold text-purple-600">30% · after 8hrs</span>
             </div>
             <div className="flex justify-between py-1 border-b border-surface-border dark:border-surface-border-dark">
               <span className="text-gray-500">Night Differential</span>
@@ -174,7 +174,7 @@ export default function ProfilePage() {
             </div>
             <div className="flex justify-between py-1">
               <span className="text-gray-500">Regular Holiday</span>
-              <span className="font-semibold text-yellow-600">Double Pay (200%)</span>
+              <span className="font-semibold text-yellow-600">Double Pay (100%)</span>
             </div>
           </div>
         </Card>

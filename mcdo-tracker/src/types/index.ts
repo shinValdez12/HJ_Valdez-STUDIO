@@ -8,7 +8,7 @@ export type HolidayType = 'none' | 'special' | 'regular';
 export type ShiftType = 'morning' | 'afternoon' | 'evening' | 'night' | 'custom';
 
 // Attendance status
-export type AttendanceStatus = 'present' | 'absent' | 'holiday' | 'restday';
+export type AttendanceStatus = 'present' | 'Restday' | 'holiday' | 'restday';
 
 export interface EmployeeProfile {
   id: string;
@@ -61,7 +61,7 @@ export interface PayrollSummary {
   totalNightDiffPay: number;
   totalEarnings: number;
   daysWorked: number;
-  daysAbsent: number;
+  daysRestday: number;
   lateCount: number;
   // Legacy fields for backward compatibility
   totalRegularHours: number;
@@ -93,7 +93,7 @@ export interface CalendarDay {
   status: AttendanceStatus | null;
 }
 
-// Payroll rate constants
+// Payroll rate
 export const PAYROLL_RATES = {
   crew: {
     hourlyRate: 75,
@@ -104,7 +104,7 @@ export const PAYROLL_RATES = {
     role: 'Crew Trainer' as const,
   },
   nightDiffPercent: 0.10,   // 10%
-  otMultiplier: 1.25,        // 125%
+  otMultiplier: 1.30,       // 130%
   specialHolidayMultiplier: 1.30,  // 130%
   regularHolidayMultiplier: 2.00,  // 200%
   overtimeThreshold: 8,      // OT after 8 hours

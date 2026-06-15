@@ -88,7 +88,7 @@ export const projects: Project[] = [
     role: "Lead Mobile Developer",
     challenges: "Handling accurate time calculations including overtime, night differential, and flexible schedules while ensuring a smooth and responsive mobile UI.",
     solution: "Built a lightweight and efficient mobile app using React Native and Expo. Implemented real time calculations for work hours and earnings, and designed a clean UI for better usability.",
-    apkUrl: "/native/MacdotrackerPH.apk",
+    apkUrl: "/native/crewtime.apk",
     iosUrl: "coming-soon",
     videoUrl: "",
     featured: true,

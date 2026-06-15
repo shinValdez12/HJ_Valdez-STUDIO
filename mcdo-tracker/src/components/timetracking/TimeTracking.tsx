@@ -176,7 +176,7 @@ export default function TimeTracking({ openOnAdd, onOpenHandled }: TimeTrackingP
                       </span>
                     </div>
                     <p className="text-xs text-gray-500 dark:text-gray-400">
-                      {entry.status === 'present' ? `${formatTime(entry.timeIn)} – ${formatTime(entry.timeOut)} · ${entry.hoursWorked.toFixed(1)}h` : 'Absent'}
+                      {entry.status === 'present' ? `${formatTime(entry.timeIn)} – ${formatTime(entry.timeOut)} · ${entry.hoursWorked.toFixed(1)}h` : 'Restday'}
                     </p>
                   </div>
                   <div className="text-right flex-shrink-0">

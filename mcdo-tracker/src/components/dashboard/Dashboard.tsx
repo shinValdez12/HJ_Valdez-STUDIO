@@ -197,7 +197,7 @@ export default function Dashboard({ onNavigate }: DashboardProps) {
                   <div className="flex items-center gap-2">
                     <div className={`w-2 h-2 rounded-full ${
                       entry.status === 'present' ? 'bg-emerald-500' :
-                      entry.status === 'absent' ? 'bg-red-500' : 'bg-yellow-500'
+                      entry.status === 'Restday' ? 'bg-red-500' : 'bg-yellow-500'
                     }`} />
                     <div>
                       <p className="text-sm font-medium text-gray-900 dark:text-white">{formatDate(entry.date)}</p>

@@ -168,7 +168,7 @@ Located in vite.config.ts:
 
 ```typescript
 manifest: {
-  name: "McDonald's Time Tracker",
+  name: "CrewTime",
   short_name: 'CrewTime',
   description: 'Employee time tracking and payroll calculator',
   theme_color: '#DA291C',

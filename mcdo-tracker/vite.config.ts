@@ -7,9 +7,9 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
+      includeAssets: ['favicon.svg', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
-        name: "McDonald's Time Tracker",
+        name: "CrewTime",
         short_name: 'CrewTime',
         description: "Employee time tracking and payroll calculator for McDonald's crew",
         theme_color: '#DA291C',
